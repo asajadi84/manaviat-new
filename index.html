@@ -25,20 +25,38 @@
     <script>
         window.jsPDF = window.jspdf.jsPDF;
         var cardLocations = [
-            [10, 10, 60, 90],
-            [10, 110, 60, 90],
-            [80, 10, 60, 90],
-            [80, 110, 60, 90],
-            [150, 10, 60, 90],
-            [150, 110, 60, 90],
-            [220, 10, 60, 90],
-            [220, 110, 60, 90]
+            [10, 10, 58, 87],
+            [68, 10, 58, 87],
+            [126, 10, 58, 87],
+            [184, 10, 58, 87],
+            [242, 10, 58, 87],
+            [300, 10, 58, 87],
+            [358, 10, 58, 87],
+            [416, 10, 58, 87],
+
+            [10, 97, 58, 87],
+            [68, 97, 58, 87],
+            [126, 97, 58, 87],
+            [184, 97, 58, 87],
+            [242, 97, 58, 87],
+            [300, 97, 58, 87],
+            [358, 97, 58, 87],
+            [416, 97, 58, 87],
+
+            [10, 184, 58, 87],
+            [68, 184, 58, 87],
+            [126, 184, 58, 87],
+            [184, 184, 58, 87],
+            [242, 184, 58, 87],
+            [300, 184, 58, 87],
+            [358, 184, 58, 87],
+            [416, 184, 58, 87],
         ];
 
         let pdfDoc = new jsPDF({
             orientation: 'l',
             unit: 'mm',
-            format: 'a4',
+            format: [485.14, 294.894],
             putOnlyUsedFonts: true
         });
 
@@ -263,8 +281,8 @@
 
         async function startProcedure(){
             for(let i = 0; i < tempData.length; i++){
-                await generateCard(tempData[i].fullName, tempData[i].nationalId, tempData[i].province, tempData[i].qrCode, cardLocations[i % 8]);
-                if(i % 8 == 7){
+                await generateCard(tempData[i].fullName, tempData[i].nationalId, tempData[i].province, tempData[i].qrCode, cardLocations[i % 24]);
+                if(i % 24 == 23){
                     pdfDoc.addPage();
                 }
 
